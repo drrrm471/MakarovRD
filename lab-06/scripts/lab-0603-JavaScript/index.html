@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript FP Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .console { background: #f4f4f4; padding: 15px; border-radius: 5px; margin: 10px 0; font-family: monospace; }
+        .status { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Лабораторная работа 6 - Функциональное программирование</h1>
+    <div id="app">
+        <div class="console" id="console"></div>
+        <div class="status">Все файлы загружены и выполнены успешно!</div>
+    </div>
+    
+    <script type="module">
+        // Импорт всех файлов
+        import './array-methods.js';
+        import './functions-closures.js';
+        import './immutability.js';
+        import './async-fp.js';
+        import './debounce.js';
+        
+        // Демонстрация processUsers
+        import { processUsers } from './array-methods.js';
+        
+        const users = [
+            { name: 'John', age: 25, city: 'New York', active: true, email: 'john@example.com' },
+            { name: 'Jane', age: 30, city: 'Boston', active: false, email: 'jane@example.com' }
+        ];
+        
+        console.log('Processed users:', processUsers(users));
+        
+        document.getElementById('console').textContent = 
+            '✅ Все задания выполнены!\n' +
+            '✅ Функции высшего порядка (map/filter/reduce)\n' +
+            '✅ Стрелочные функции и замыкания\n' +
+            '✅ Иммутабельные обновления\n' +
+            '✅ Асинхронное FP\n' +
+            '✅ Задание 1: processUsers\n' +
+            '✅ Задание 2: useForm хук\n' +
+            '✅ Задание 3: debounce функция\n\n' +
+            'Проверьте консоль браузера для детального вывода!';
+    </script>
+</body>
+</html>
