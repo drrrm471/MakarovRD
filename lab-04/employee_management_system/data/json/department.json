@@ -1,0 +1,42 @@
+{
+  "name": "IT",
+  "employees": [
+    {
+      "type": "Employee",
+      "id": 1,
+      "name": "Евгений",
+      "department": "ADMIN",
+      "base_salary": 30000.0
+    },
+    {
+      "type": "Manager",
+      "id": 2,
+      "name": "Максим",
+      "department": "MANAGEMENT",
+      "base_salary": 60000.0,
+      "bonus": 10000.0
+    },
+    {
+      "type": "Developer",
+      "id": 3,
+      "name": "Даниил",
+      "department": "DEV",
+      "base_salary": 80000.0,
+      "tech_stack": [
+        "JS",
+        "GO",
+        "C"
+      ],
+      "seniority_level": "senior"
+    },
+    {
+      "type": "Salesperson",
+      "id": 4,
+      "name": "Павел",
+      "department": "SALES",
+      "base_salary": 30000.0,
+      "commission_rate": 0.2,
+      "sales_volume": 200000.0
+    }
+  ]
+}
