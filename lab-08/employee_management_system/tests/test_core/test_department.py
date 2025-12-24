@@ -62,9 +62,7 @@ class TestDepartmentPolymorphism:
 
         total = dept.calculate_total_salary()
         expected = (
-            emp.calculate_salary()
-            + mgr.calculate_salary()
-            + dev.calculate_salary()
+            emp.calculate_salary() + mgr.calculate_salary() + dev.calculate_salary()
         )
 
         assert total == expected
@@ -88,7 +86,7 @@ class TestEmployeeMagicMethods:
         emp2 = Employee(1, "Jane", "HR", 4000.0)
         emp3 = Employee(2, "Bob", "IT", 5000.0)
 
-        assert emp1 == emp2    # одинаковый id
+        assert emp1 == emp2  # одинаковый id
         assert emp1 != emp3
 
     def test_employee_salary_comparison(self):

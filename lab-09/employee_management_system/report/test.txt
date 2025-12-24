@@ -1,0 +1,145 @@
+========================================================================= test session starts ==========================================================================
+platform win32 -- Python 3.12.2, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\MSI\AppData\Local\Programs\Python\Python312\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\MSI\Desktop\lab-08\employee_management_system
+collected 54 items
+
+tests/test_core/test_department.py::TestDepartmentBasic::test_add_and_get_employees PASSED                                                                        [  1%]
+tests/test_core/test_department.py::TestDepartmentBasic::test_add_duplicate_employee_raises PASSED                                                                [  3%]
+tests/test_core/test_department.py::TestDepartmentBasic::test_remove_employee_by_id PASSED                                                                        [  5%]
+tests/test_core/test_department.py::TestDepartmentBasic::test_remove_non_existing_employee_raises PASSED                                                          [  7%]
+tests/test_core/test_department.py::TestDepartmentBasic::test_find_employee_by_id PASSED                                                                          [  9%]
+tests/test_core/test_department.py::TestDepartmentPolymorphism::test_calculate_total_salary PASSED                                                                [ 11%]
+tests/test_core/test_department.py::TestDepartmentPolymorphism::test_get_employee_count_by_type PASSED                                                            [ 12%]
+tests/test_core/test_department.py::TestEmployeeMagicMethods::test_employee_equality_by_id PASSED                                                                 [ 14%]
+tests/test_core/test_department.py::TestEmployeeMagicMethods::test_employee_salary_comparison PASSED                                                              [ 16%]
+tests/test_core/test_department.py::TestEmployeeMagicMethods::test_employee_addition_with_employee_and_number PASSED                                              [ 18%]
+tests/test_core/test_department.py::TestDepartmentMagicMethods::test_len_getitem_contains_iter FAILED                                                             [ 20%]
+tests/test_core/test_department.py::TestSerialization::test_employee_to_from_dict PASSED                                                                          [ 22%]
+tests/test_core/test_department.py::TestSorting::test_sorting_by_name_and_salary PASSED                                                                           [ 24%]
+tests/test_core/test_employee.py::TestEmployeeCreation::test_employee_creation_valid_data PASSED                                                                  [ 25%]
+tests/test_core/test_employee.py::TestEmployeeCreation::test_employee_invalid_id_in_init_raises_error PASSED                                                      [ 27%]
+tests/test_core/test_employee.py::TestEmployeeCreation::test_employee_invalid_base_salary_in_init_raises_error PASSED                                             [ 29%]
+tests/test_core/test_employee.py::TestEmployeeCreation::test_setters_validate_id_and_base_salary PASSED                                                           [ 31%]
+tests/test_core/test_employee.py::TestEmployeeCreation::test_setter_name_empty_string_raises_error PASSED                                                         [ 33%]
+tests/test_core/test_employee.py::TestEmployeeMethods::test_employee_str_representation PASSED                                                                    [ 35%]
+tests/test_core/test_employee.py::TestEmployeeMethods::test_employee_calculate_salary_returns_base_salary PASSED                                                  [ 37%]
+tests/test_core/test_project_company.py::TestProject::test_project_team_management PASSED                                                                         [ 38%]
+tests/test_core/test_project_company.py::TestProject::test_project_total_salary PASSED                                                                            [ 40%]
+tests/test_core/test_project_company.py::TestProject::test_project_invalid_status_raises_error[invalid] FAILED                                                    [ 42%]
+tests/test_core/test_project_company.py::TestProject::test_project_invalid_status_raises_error[done] FAILED                                                       [ 44%]
+tests/test_core/test_project_company.py::TestProject::test_project_invalid_status_raises_error[in_progress] FAILED                                                [ 46%]
+tests/test_core/test_project_company.py::TestCompanyDepartmentsProjects::test_company_department_management PASSED                                                [ 48%]
+tests/test_core/test_project_company.py::TestCompanyDepartmentsProjects::test_cannot_delete_department_with_employees PASSED                                      [ 50%]
+tests/test_core/test_project_company.py::TestCompanyDepartmentsProjects::test_company_find_employee PASSED                                                        [ 51%]
+tests/test_core/test_project_company.py::TestCompanyDepartmentsProjects::test_company_total_monthly_cost PASSED                                                   [ 53%] 
+tests/test_core/test_project_company.py::TestCustomExceptions::test_duplicate_project_id_raises_error PASSED                                                      [ 55%] 
+tests/test_core/test_project_company.py::TestComplexCompanyStructure::test_complex_company_structure PASSED                                                       [ 57%] 
+tests/test_employees/test_employees_hierarchy.py::TestAbstractEmployee::test_cannot_instantiate_abstract_employee PASSED                                          [ 59%] 
+tests/test_employees/test_employees_hierarchy.py::TestAbstractEmployee::test_subclasses_are_subtypes_of_abstract_employee PASSED                                  [ 61%] 
+tests/test_employees/test_employees_hierarchy.py::TestManager::test_manager_salary_calculation PASSED                                                             [ 62%] 
+tests/test_employees/test_employees_hierarchy.py::TestManager::test_manager_bonus_validation PASSED                                                               [ 64%] 
+tests/test_employees/test_employees_hierarchy.py::TestManager::test_manager_str_contains_bonus PASSED                                                             [ 66%] 
+tests/test_employees/test_employees_hierarchy.py::TestDeveloper::test_developer_salary_by_level[junior-1.0] PASSED                                                [ 68%] 
+tests/test_employees/test_employees_hierarchy.py::TestDeveloper::test_developer_salary_by_level[middle-1.5] PASSED                                                [ 70%] 
+tests/test_employees/test_employees_hierarchy.py::TestDeveloper::test_developer_salary_by_level[senior-2.0] PASSED                                                [ 72%] 
+tests/test_employees/test_employees_hierarchy.py::TestDeveloper::test_add_skill_appends_to_tech_stack FAILED                                                      [ 74%] 
+tests/test_employees/test_employees_hierarchy.py::TestDeveloper::test_tech_stack_validation FAILED                                                                [ 75%] 
+tests/test_employees/test_employees_hierarchy.py::TestDeveloper::test_developer_iterates_over_skills PASSED                                                       [ 77%] 
+tests/test_employees/test_employees_hierarchy.py::TestSalesperson::test_salesperson_salary_with_commission PASSED                                                 [ 79%]
+tests/test_employees/test_employees_hierarchy.py::TestSalesperson::test_update_sales_increases_volume PASSED                                                      [ 81%] 
+tests/test_employees/test_employees_hierarchy.py::TestSalesperson::test_commission_and_sales_validation FAILED                                                    [ 83%] 
+tests/test_employees/test_employees_hierarchy.py::TestEmployeeFactories::test_manager_factory_creates_manager PASSED                                              [ 85%] 
+tests/test_employees/test_employees_hierarchy.py::TestEmployeeFactories::test_developer_factory_creates_developer PASSED                                          [ 87%] 
+tests/test_employees/test_employees_hierarchy.py::TestEmployeeFactories::test_salesperson_factory_creates_salesperson PASSED                                      [ 88%] 
+tests/test_employees/test_employees_hierarchy.py::TestPolymorphicEmployees::test_polymorphic_calculate_salary PASSED                                              [ 90%] 
+tests/test_patterns/test_builder.py::TestEmployeeBuilder::test_build_developer_with_builder PASSED                                                                [ 92%] 
+tests/test_patterns/test_factory.py::TestCompanyFactories::test_tech_company_factory_creates_company_with_departments_and_projects FAILED                         [ 94%]
+tests/test_patterns/test_factory.py::TestCompanyFactories::test_sales_company_factory_creates_company_with_departments_and_projects FAILED                        [ 96%]
+tests/test_patterns/test_singleton.py::TestSingletonDatabaseConnection::test_singleton_instance_is_same PASSED                                                    [ 98%] 
+tests/test_patterns/test_singleton.py::TestSingletonDatabaseConnection::test_get_connection_returns_same_object PASSED                                            [100%] 
+
+=============================================================================== FAILURES =============================================================================== 
+______________________________________________________ TestDepartmentMagicMethods.test_len_getitem_contains_iter _______________________________________________________ 
+tests\test_core\test_department.py:109: in test_len_getitem_contains_iter
+    employees = [Employee(i, f"Emp{i}", "IT", 5000.0) for i in range(3)]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\core\employee.py:20: in __init__
+    validator.validate_id(id)
+src\utils\validators.py:57: in validate_id
+    return EmployeeValidator.validate_positive_integer(value, "ID сотрудника")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\utils\validators.py:47: in validate_positive_integer
+    raise ValueError(f"{field_name} должно быть положительным!")
+E   ValueError: ID сотрудника должно быть положительным!
+____________________________________________________ TestProject.test_project_invalid_status_raises_error[invalid] _____________________________________________________ 
+tests\test_core\test_project_company.py:45: in test_project_invalid_status_raises_error
+    Project(1, "Test", "Test", "2024-12-31", invalid_status)
+src\core\project.py:42: in __init__
+    validator.validate_status(status)
+src\utils\validators.py:158: in validate_status
+    raise ValueError(f"Статус должен быть одним из: {valid_statuses}")
+E   ValueError: Статус должен быть одним из: {'completed', 'planning', 'cancelled', 'active'}
+______________________________________________________ TestProject.test_project_invalid_status_raises_error[done] ______________________________________________________ 
+tests\test_core\test_project_company.py:45: in test_project_invalid_status_raises_error
+    Project(1, "Test", "Test", "2024-12-31", invalid_status)
+src\core\project.py:42: in __init__
+    validator.validate_status(status)
+src\utils\validators.py:158: in validate_status
+    raise ValueError(f"Статус должен быть одним из: {valid_statuses}")
+E   ValueError: Статус должен быть одним из: {'completed', 'planning', 'cancelled', 'active'}
+__________________________________________________ TestProject.test_project_invalid_status_raises_error[in_progress] ___________________________________________________ 
+tests\test_core\test_project_company.py:45: in test_project_invalid_status_raises_error
+    Project(1, "Test", "Test", "2024-12-31", invalid_status)
+src\core\project.py:42: in __init__
+    validator.validate_status(status)
+src\utils\validators.py:158: in validate_status
+    raise ValueError(f"Статус должен быть одним из: {valid_statuses}")
+E   ValueError: Статус должен быть одним из: {'completed', 'planning', 'cancelled', 'active'}
+__________________________________________________________ TestDeveloper.test_add_skill_appends_to_tech_stack __________________________________________________________ 
+tests\test_employees\test_employees_hierarchy.py:73: in test_add_skill_appends_to_tech_stack
+    assert "SQL" in dev.tech_stack
+E   AssertionError: assert 'SQL' in ['Python']
+E    +  where ['Python'] = <src.employees.developer.Developer object at 0x000001835690F080>.tech_stack
+_______________________________________________________________ TestDeveloper.test_tech_stack_validation _______________________________________________________________ 
+tests\test_employees\test_employees_hierarchy.py:80: in test_tech_stack_validation
+    dev.tech_stack = "not_a_list"  # не список
+    ^^^^^^^^^^^^^^
+E   AttributeError: property 'tech_stack' of 'Developer' object has no setter
+_________________________________________________________ TestSalesperson.test_commission_and_sales_validation _________________________________________________________ 
+tests\test_employees\test_employees_hierarchy.py:117: in test_commission_and_sales_validation
+    with pytest.raises(ValueError):
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_____________________________________ TestCompanyFactories.test_tech_company_factory_creates_company_with_departments_and_projects _____________________________________ 
+tests\test_patterns\test_factory.py:25: in test_tech_company_factory_creates_company_with_departments_and_projects
+    assert any(p.name == "AI Platform" for p in projs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_patterns\test_factory.py:25: in <genexpr>
+    assert any(p.name == "AI Platform" for p in projs)
+               ^^^^^^
+src\core\project.py:70: in name
+    return self.__name
+           ^^^^^^^^^^^
+E   AttributeError: 'Project' object has no attribute '_Project__name'. Did you mean: '_Project__team'?
+____________________________________ TestCompanyFactories.test_sales_company_factory_creates_company_with_departments_and_projects _____________________________________ 
+tests\test_patterns\test_factory.py:38: in test_sales_company_factory_creates_company_with_departments_and_projects
+    assert any(p.name == "Vending" for p in projs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_patterns\test_factory.py:38: in <genexpr>
+    assert any(p.name == "Vending" for p in projs)
+               ^^^^^^
+src\core\project.py:70: in name
+    return self.__name
+           ^^^^^^^^^^^
+E   AttributeError: 'Project' object has no attribute '_Project__name'. Did you mean: '_Project__team'?
+======================================================================= short test summary info ======================================================================== 
+FAILED tests/test_core/test_department.py::TestDepartmentMagicMethods::test_len_getitem_contains_iter - ValueError: ID сотрудника должно быть положительным!
+FAILED tests/test_core/test_project_company.py::TestProject::test_project_invalid_status_raises_error[invalid] - ValueError: Статус должен быть одним из: {'completed', 'planning', 'cancelled', 'active'}
+FAILED tests/test_core/test_project_company.py::TestProject::test_project_invalid_status_raises_error[done] - ValueError: Статус должен быть одним из: {'completed', 'planning', 'cancelled', 'active'}
+FAILED tests/test_core/test_project_company.py::TestProject::test_project_invalid_status_raises_error[in_progress] - ValueError: Статус должен быть одним из: {'completed', 'planning', 'cancelled', 'active'}
+FAILED tests/test_employees/test_employees_hierarchy.py::TestDeveloper::test_add_skill_appends_to_tech_stack - AssertionError: assert 'SQL' in ['Python']
+FAILED tests/test_employees/test_employees_hierarchy.py::TestDeveloper::test_tech_stack_validation - AttributeError: property 'tech_stack' of 'Developer' object has no setter
+FAILED tests/test_employees/test_employees_hierarchy.py::TestSalesperson::test_commission_and_sales_validation - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED tests/test_patterns/test_factory.py::TestCompanyFactories::test_tech_company_factory_creates_company_with_departments_and_projects - AttributeError: 'Project' object has no attribute '_Project__name'. Did you mean: '_Project__team'?
+FAILED tests/test_patterns/test_factory.py::TestCompanyFactories::test_sales_company_factory_creates_company_with_departments_and_projects - AttributeError: 'Project' object has no attribute '_Project__name'. Did you mean: '_Project__team'?
+===================================================================== 9 failed, 45 passed in 0.21s ===================================================================== 

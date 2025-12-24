@@ -8,6 +8,7 @@ from src.employees.developer import Developer
 from src.employees.manager import Manager
 from src.employees.salesperson import Salesperson
 
+
 class Department:
     """Класс для управления отделом и его сотрудниками."""
 
@@ -22,7 +23,7 @@ class Department:
     def name(self):
         """Возвращает название отдела."""
         return self.__name
-    
+
     @name.setter
     def name(self, value):
         """Устанавливает название отдела с проверкой."""
@@ -32,17 +33,17 @@ class Department:
             raise ValueError("Название отдела не может быть пустой строкой!")
         self.__name = value
 
-
     @property
     def employees(self):
         """Возвращает список сотрудников."""
         return self.__employees
 
-
     def add_employee(self, employee: AbstractEmployee) -> None:
         """Добавляет нового сотрудника в отдел."""
         if not isinstance(employee, AbstractEmployee):
-            raise ValueError("Добавляемый сотрудник должен быть из класса AbstractEmployee!")
+            raise ValueError(
+                "Добавляемый сотрудник должен быть из класса AbstractEmployee!"
+            )
         if employee in self.employees:
             raise ValueError("Добавляемый сотрудник уже находится в отделе!")
         self.employees.append(employee)
@@ -78,57 +79,55 @@ class Department:
     def validate_path_json(filename: str, path: str):
         """Вспомогательная функция, для проверки и/или создания пути до .json файлов"""
         full_path = os.path.abspath(path)
-        if not filename.endswith('.json'):
-            raise ValueError('Файл должен быть в формате .json!')
+        if not filename.endswith(".json"):
+            raise ValueError("Файл должен быть в формате .json!")
         filepath = os.path.join(full_path, filename)
-        
+
         os.makedirs(path, exist_ok=True)
         return filepath
-    
-    
+
     def to_dict(self) -> dict:
         """Преобразует объект в словарь без приватных префиксов."""
-        data_department = {'name': self.name}
-        data_department['employees'] = [e.to_dict() for e in self.employees]
+        data_department = {"name": self.name}
+        data_department["employees"] = [e.to_dict() for e in self.employees]
         return data_department
-
 
     def save_to_file(self, filename: str) -> None:
         """Сохраняет данные отдела и сотрудников в JSON-файл."""
-        filepath = self.validate_path_json(filename, 'data/json')
+        filepath = self.validate_path_json(filename, "data/json")
         data = {
-            'name': self.name,
-            'employees': [emp.to_dict() for emp in self.employees]
+            "name": self.name,
+            "employees": [emp.to_dict() for emp in self.employees],
         }
-        with open(filepath, 'w', encoding='utf-8') as f:
+        with open(filepath, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
 
     @classmethod
-    def from_dict(cls, data: dict) -> 'Department':
+    def from_dict(cls, data: dict) -> "Department":
         """
         Создание экземпляра Department из словаря.
         """
-        department = cls(data['name'])
-        for emp_data in data['employees']:
-            if 'bonus' in emp_data:
+        department = cls(data["name"])
+        for emp_data in data["employees"]:
+            if "bonus" in emp_data:
                 department.add_employee(Manager.from_dict(emp_data))
-            elif 'tech_stack' in emp_data:
+            elif "tech_stack" in emp_data:
                 department.add_employee(Developer.from_dict(emp_data))
-            elif 'commission_rate' in emp_data:
+            elif "commission_rate" in emp_data:
                 department.add_employee(Salesperson.from_dict(emp_data))
             else:
                 department.add_employee(Employee.from_dict(emp_data))
         return department
 
     @classmethod
-    def load_from_file(cls, filename: str) -> 'Department':
+    def load_from_file(cls, filename: str) -> "Department":
         """Загружает отдел из JSON-файла."""
         try:
-            filepath = cls.validate_path_json(filename, 'data/json')
-            with open(filepath, 'r', encoding='utf-8') as f:
+            filepath = cls.validate_path_json(filename, "data/json")
+            with open(filepath, "r", encoding="utf-8") as f:
                 data = json.load(f)
         except:
-            raise ValueError(f'Ошибка при чтении файла {filename}!')
+            raise ValueError(f"Ошибка при чтении файла {filename}!")
         return Department.from_dict(data)
 
     def __len__(self) -> int:

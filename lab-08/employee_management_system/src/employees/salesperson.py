@@ -1,12 +1,21 @@
 from src.core.employee import Employee
 
+
 class Salesperson(Employee):
     """Продавец с комиссией и объемом продаж."""
 
-    def __init__(self, id: int, name: str, department: str, base_salary: float, commission_rate: float, sales_volume: float):
+    def __init__(
+        self,
+        id: int,
+        name: str,
+        department: str,
+        base_salary: float,
+        commission_rate: float,
+        sales_volume: float,
+    ):
         """
         Инициализация базовых атрибутов продавца.
-        
+
         :param id: Уникальный идентификатор продавца.
         :param name: Имя продавца.
         :param department: Название отдела.
@@ -53,13 +62,22 @@ class Salesperson(Employee):
     @classmethod
     def from_dict(cls, data: dict) -> Employee:
         """Создаёт объект Salesperson из словаря."""
-        if not data['type'] == cls.__name__:
-            raise ValueError('Неподходящий тип данных!')
-        del data['type']
-        required_fields = ['id', 'name', 'department', 'base_salary', 'commission_rate', 'sales_volume']
+        if not data["type"] == cls.__name__:
+            raise ValueError("Неподходящий тип данных!")
+        del data["type"]
+        required_fields = [
+            "id",
+            "name",
+            "department",
+            "base_salary",
+            "commission_rate",
+            "sales_volume",
+        ]
         for field in required_fields:
             if field not in data:
-                raise ValueError(f"Для создания {cls.__name__} отсутствует поле: '{field}'")
+                raise ValueError(
+                    f"Для создания {cls.__name__} отсутствует поле: '{field}'"
+                )
         return cls(**data)
 
     def calculate_salary(self):

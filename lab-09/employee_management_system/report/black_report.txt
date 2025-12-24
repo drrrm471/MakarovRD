@@ -1,0 +1,25 @@
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\patterns\singleton.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\utils\comparators.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\database\connection.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\core\abstract_employee.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\employees\manager.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\core\employee.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\utils\exceptions.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\tests\test_patterns\test_builder.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\tests\test_patterns\test_singleton.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\patterns\builder.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\employees\salesperson.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\employees\developer.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\tests\test_patterns\test_factory.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\core\department.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\factories\employee_factory.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\core\project.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\tests\test_core\test_project_company.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\utils\validators.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\tests\test_employees\test_employees_hierarchy.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\tests\test_core\test_department.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\factories\company_factory.py
+reformatted C:\Users\MSI\Desktop\lab-08\employee_management_system\src\core\company.py
+
+All done! ✨ 🍰 ✨
+22 files reformatted, 7 files left unchanged.

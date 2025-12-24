@@ -11,16 +11,24 @@ from src.utils.exceptions import InvalidStatusError, DuplicateIdError
 
 
 class Project(Department):
-    """ Класс, представляющий проект в компании. """
-    def __init__(self, project_id: int, name: str, description: str, deadline: str, status: str = "planning"):
+    """Класс, представляющий проект в компании."""
+
+    def __init__(
+        self,
+        project_id: int,
+        name: str,
+        description: str,
+        deadline: str,
+        status: str = "planning",
+    ):
         """
         Инициализация базовых атрибутов проекта
-        
+
         :param project_id: уникальный идентификатор проекта
         :param name: название проекта
         :param description: описание проекта
         :param deadline: срок выполнения проекта
-        :param status: статус проекта ("planning", "active", "completed", "cancelled")        
+        :param status: статус проекта ("planning", "active", "completed", "cancelled")
         """
         self._validate_id(project_id)
         self._validate_name(name)
@@ -38,7 +46,7 @@ class Project(Department):
     def _validate_id(self, value: int) -> None:
         """Проверка ID в пределах всей компании"""
         if not isinstance(value, int) or value <= 0:
-            raise ValueError('Идентификатор должен быть целым положительным числом!')
+            raise ValueError("Идентификатор должен быть целым положительным числом!")
 
     def _validate_name(self, value: str) -> None:
         """Валидация имени."""
@@ -53,31 +61,33 @@ class Project(Department):
             raise ValueError("Описание проекта должно быть строкой!")
         if not value.strip():
             raise ValueError("Описание проекта не может быть пустой строкой!")
-        
+
     def _validate_unique_employee_id(self, value: int) -> None:
         """Проверка уникальности ID сотрудника"""
         self._validate_id(value)
         if value in [e.id for e in self.get_team()]:
-            raise DuplicateIdError(f'Уже cуществует сотрудник с ID: {value}!')
+            raise DuplicateIdError(f"Уже cуществует сотрудник с ID: {value}!")
 
     def _validate_status(self, value: str) -> None:
         """Валидация статуса проекта"""
         valide_statuses = ("planning", "active", "completed", "cancelled")
         if value not in valide_statuses:
             raise InvalidStatusError()
-        
+
     def _validate_deadline(self, value: str) -> None:
         """Валидация срока выполнения."""
         try:
             datetime.strptime(value, "%Y-%m-%d")
         except ValueError:
-            raise ValueError(f"Срок выполнения должен быть в формате YYYY-MM-DD, получено: '{value}'")
+            raise ValueError(
+                f"Срок выполнения должен быть в формате YYYY-MM-DD, получено: '{value}'"
+            )
 
     @property
     def project_id(self):
         """Возвращает идентификатор проекта."""
         return self.__project_id
-    
+
     @project_id.setter
     def project_id(self, value: int):
         """Устанавливает идентификатор проекта с проверкой."""
@@ -88,7 +98,7 @@ class Project(Department):
     def name(self):
         """Возвращает название проекта."""
         return self.__name
-    
+
     @name.setter
     def name(self, value: str):
         """Устанавливает название проекта с проверкой."""
@@ -99,7 +109,7 @@ class Project(Department):
     def description(self):
         """Возвращает описание проекта."""
         return self.__description
-    
+
     @description.setter
     def description(self, value: str):
         """Устанавливает описание проекта с проверкой."""
@@ -110,7 +120,7 @@ class Project(Department):
     def deadline(self):
         """Возвращает срок выполнения проекта."""
         return self.__deadline
-    
+
     @deadline.setter
     def deadline(self, value: str):
         self._validate_deadline(value)
@@ -120,7 +130,7 @@ class Project(Department):
     def status(self):
         """Возвращает статус проекта."""
         return self.__status
-    
+
     @status.setter
     def status(self, value: str):
         """Устанавливает статус проекта с проверкой."""
@@ -131,11 +141,13 @@ class Project(Department):
     def team(self):
         """Возвращает список сотрудников проекта."""
         return self.__team
-    
+
     def add_team_member(self, employee: AbstractEmployee) -> None:
         """Добавляет сотрудника в проект"""
         if not isinstance(employee, AbstractEmployee):
-            raise ValueError("Добавляемый сотрудник должен быть из класса AbstractEmployee!")
+            raise ValueError(
+                "Добавляемый сотрудник должен быть из класса AbstractEmployee!"
+            )
         if employee in self.team:
             raise ValueError("Добавляемый сотрудник уже находится в проекте!")
         self._validate_unique_employee_id(employee.id)
@@ -145,14 +157,13 @@ class Project(Department):
         """Ищет сотрудника в проекте по id"""
         self._validate_id(employee_id)
         return next((e for e in self.team if e.id == employee_id), None)
-    
+
     def remove_team_member(self, employee_id: int) -> None:
         """Удаляет сотрудника из отдела по id"""
         employee = self.find_team_member(employee_id)
         if not employee:
             raise ValueError("Cотрудника нет в списке!")
         self.team.remove(employee)
-
 
     def get_team(self) -> list[AbstractEmployee]:
         """Возвращает список команды сотрудников"""
@@ -183,10 +194,10 @@ class Project(Department):
         data = self.__dict__
         data_project = dict()
         for i in data:
-            value = i[1:].split('__')[-1]
-            if value == 'deadline':
+            value = i[1:].split("__")[-1]
+            if value == "deadline":
                 data_project[value] = str(data[i])
-            elif value == 'team':
+            elif value == "team":
                 data_project[value] = [e.to_dict() for e in data[i]]
             else:
                 data_project[value] = data[i]
@@ -202,18 +213,18 @@ class Project(Department):
         Создание экземпляра Project из словаря.
         """
         project = Project(
-            data['project_id'],
-            data['name'],
-            data['description'],
-            data['deadline'],
-            data['status']
+            data["project_id"],
+            data["name"],
+            data["description"],
+            data["deadline"],
+            data["status"],
         )
-        for emp_data in data['team']:
-            if 'bonus' in emp_data:
+        for emp_data in data["team"]:
+            if "bonus" in emp_data:
                 project.add_team_member(Manager.from_dict(emp_data))
-            elif 'tech_stack' in emp_data:
+            elif "tech_stack" in emp_data:
                 project.add_team_member(Developer.from_dict(emp_data))
-            elif 'commission_rate' in emp_data:
+            elif "commission_rate" in emp_data:
                 project.add_team_member(Salesperson.from_dict(emp_data))
             else:
                 project.add_team_member(Employee.from_dict(emp_data))

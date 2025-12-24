@@ -1,12 +1,21 @@
 from src.core.employee import Employee
 
+
 class Developer(Employee):
     """Разработчик с уровнем seniority и стеком технологий."""
 
-    def __init__(self, id: int, name: str, department: str, base_salary: float, tech_stack: list[str], seniority_level: str):
+    def __init__(
+        self,
+        id: int,
+        name: str,
+        department: str,
+        base_salary: float,
+        tech_stack: list[str],
+        seniority_level: str,
+    ):
         """
         Инициализация базовых атрибутов разработчика.
-        
+
         :param id: Уникальный идентификатор разработчика.
         :param name: Имя разработчика.
         :param department: Название отдела.
@@ -46,9 +55,13 @@ class Developer(Employee):
         if not isinstance(list_value, list):
             raise ValueError("Стек технологий должен быть списком (list[str])!")
         if not all(isinstance(item, str) for item in list_value):
-            raise ValueError("Содержимое из списка со стеком технологий должно быть строкой!")
+            raise ValueError(
+                "Содержимое из списка со стеком технологий должно быть строкой!"
+            )
         if any(item.strip() == "" for item in list_value):
-            raise ValueError("Содержимое из списка со стеком технологий не может быть пустой строкой!")
+            raise ValueError(
+                "Содержимое из списка со стеком технологий не может быть пустой строкой!"
+            )
         self.__tech_stack = list_value
 
     def __str__(self):
@@ -62,13 +75,22 @@ class Developer(Employee):
     @classmethod
     def from_dict(cls, data: dict) -> Employee:
         """Создаёт объект Developer из словаря."""
-        if not data['type'] == cls.__name__:
-            raise ValueError('Неподходящий тип данных!')
-        del data['type']
-        required_fields = ['id', 'name', 'department', 'base_salary', 'tech_stack', 'seniority_level']
+        if not data["type"] == cls.__name__:
+            raise ValueError("Неподходящий тип данных!")
+        del data["type"]
+        required_fields = [
+            "id",
+            "name",
+            "department",
+            "base_salary",
+            "tech_stack",
+            "seniority_level",
+        ]
         for field in required_fields:
             if field not in data:
-                raise ValueError(f"Для создания {cls.__name__} отсутствует поле: '{field}'")
+                raise ValueError(
+                    f"Для создания {cls.__name__} отсутствует поле: '{field}'"
+                )
         return cls(**data)
 
     def calculate_salary(self):
@@ -83,4 +105,3 @@ class Developer(Employee):
         if not new_skill.strip():
             raise ValueError("Технология стека не может быть пустой строкой!")
         self.tech_stack.append(new_skill)
-

@@ -1,12 +1,15 @@
 from src.core.employee import Employee
 
+
 class Manager(Employee):
     """Менеджер с бонусом."""
 
-    def __init__(self, id: int, name: str, department: str, base_salary: float, bonus: float):
+    def __init__(
+        self, id: int, name: str, department: str, base_salary: float, bonus: float
+    ):
         """
         Инициализация базовых атрибутов менеджера.
-        
+
         :param id: Уникальный идентификатор менеджера.
         :param name: Имя менеджера.
         :param department: Название отдела.
@@ -15,7 +18,6 @@ class Manager(Employee):
         """
         super().__init__(id, name, department, base_salary)
         self.__bonus = bonus
-    
 
     @property
     def bonus(self):
@@ -34,13 +36,15 @@ class Manager(Employee):
     @classmethod
     def from_dict(cls, data: dict) -> Employee:
         """Создаёт объект Manager из словаря."""
-        if not data['type'] == cls.__name__:
-            raise ValueError('Неподходящий тип данных!')
-        del data['type']
-        required_fields = ['id', 'name', 'department', 'base_salary', 'bonus']
+        if not data["type"] == cls.__name__:
+            raise ValueError("Неподходящий тип данных!")
+        del data["type"]
+        required_fields = ["id", "name", "department", "base_salary", "bonus"]
         for field in required_fields:
             if field not in data:
-                raise ValueError(f"Для создания {cls.__name__} отсутствует поле: '{field}'")
+                raise ValueError(
+                    f"Для создания {cls.__name__} отсутствует поле: '{field}'"
+                )
         return cls(**data)
 
     def __str__(self):

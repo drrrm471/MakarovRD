@@ -8,7 +8,9 @@ def cmp_name(emp1: AbstractEmployee, emp2: AbstractEmployee) -> int:
 
 def cmp_salary(emp1: AbstractEmployee, emp2: AbstractEmployee) -> int:
     """Сравнивает сотрудников по зарплате (по убыванию)."""
-    return (emp2.calculate_salary() > emp1.calculate_salary()) - (emp2.calculate_salary() < emp1.calculate_salary())
+    return (emp2.calculate_salary() > emp1.calculate_salary()) - (
+        emp2.calculate_salary() < emp1.calculate_salary()
+    )
 
 
 def cmp_department_and_name(emp1: AbstractEmployee, emp2: AbstractEmployee) -> int:

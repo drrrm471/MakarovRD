@@ -12,7 +12,7 @@ class EmployeeBuilder:
     """
     Builder для пошагового создания сложных объектов сотрудников.
     """
-    
+
     def __init__(self):
         """Инициализация билдера."""
         self._id: Optional[int] = None
@@ -20,64 +20,63 @@ class EmployeeBuilder:
         self._department: Optional[str] = None
         self._base_salary: Optional[float] = None
         self._employee_type: Optional[str] = None
-        
+
         self._bonus: Optional[float] = None
         self._tech_stack: Optional[List[str]] = None
         self._seniority_level: Optional[str] = None
         self._commission_rate: Optional[float] = None
         self._sales_volume: Optional[float] = None
-    
-    def set_type(self, employee_type: str) -> 'EmployeeBuilder':
+
+    def set_type(self, employee_type: str) -> "EmployeeBuilder":
         """Установить тип сотрудника."""
         self._employee_type = employee_type.lower()
         return self
-    
-    def set_id(self, id: int) -> 'EmployeeBuilder':
+
+    def set_id(self, id: int) -> "EmployeeBuilder":
         """Установить ID сотрудника."""
         self._id = id
         return self
-    
-    def set_name(self, name: str) -> 'EmployeeBuilder':
+
+    def set_name(self, name: str) -> "EmployeeBuilder":
         """Установить имя сотрудника."""
         self._name = name
         return self
-    
-    def set_department(self, department: str) -> 'EmployeeBuilder':
+
+    def set_department(self, department: str) -> "EmployeeBuilder":
         """Установить отдел сотрудника."""
         self._department = department
         return self
-    
-    def set_base_salary(self, base_salary: float) -> 'EmployeeBuilder':
+
+    def set_base_salary(self, base_salary: float) -> "EmployeeBuilder":
         """Установить базовую зарплату."""
         self._base_salary = base_salary
         return self
-    
-    
-    def set_bonus(self, bonus: float) -> 'EmployeeBuilder':
+
+    def set_bonus(self, bonus: float) -> "EmployeeBuilder":
         """Установить бонус (для Manager)."""
         self._bonus = bonus
         return self
-    
-    def set_tech_stack(self, tech_stack: List[str]) -> 'EmployeeBuilder':
+
+    def set_tech_stack(self, tech_stack: List[str]) -> "EmployeeBuilder":
         """Установить стек технологий (для Developer)."""
         self._tech_stack = tech_stack
         return self
-    
-    def set_seniority_level(self, seniority_level: str) -> 'EmployeeBuilder':
+
+    def set_seniority_level(self, seniority_level: str) -> "EmployeeBuilder":
         """Установить уровень Seniority (для Developer)."""
         self._seniority_level = seniority_level
         return self
-    
-    def set_commission_rate(self, commission_rate: float) -> 'EmployeeBuilder':
+
+    def set_commission_rate(self, commission_rate: float) -> "EmployeeBuilder":
         """Установить процент комиссии (для Salesperson)."""
         self._commission_rate = commission_rate
         return self
-    
-    def set_sales_volume(self, sales_volume: float) -> 'EmployeeBuilder':
+
+    def set_sales_volume(self, sales_volume: float) -> "EmployeeBuilder":
         """Установить объем продаж (для Salesperson)."""
         self._sales_volume = sales_volume
         return self
-    
+
     def build(self) -> AbstractEmployee:
         """Построить объект сотрудника."""
         if self._id is None:
@@ -88,9 +87,9 @@ class EmployeeBuilder:
             raise ValueError("Необходимо ввести отдел сотрудника!")
         if self._base_salary is None:
             raise ValueError("Необходимо ввести базовую зарплату сотрудника!")
-        
+
         employee_type = self._employee_type or "employee"
-        
+
         if employee_type == "manager":
             if self._bonus is None:
                 raise ValueError("Необходимо ввести бонус сотрудника!")
@@ -99,7 +98,7 @@ class EmployeeBuilder:
                 name=self._name,
                 department=self._department,
                 base_salary=self._base_salary,
-                bonus=self._bonus
+                bonus=self._bonus,
             )
         elif employee_type == "developer":
             if self._tech_stack is None:
@@ -112,7 +111,7 @@ class EmployeeBuilder:
                 department=self._department,
                 base_salary=self._base_salary,
                 tech_stack=self._tech_stack,
-                seniority_level=self._seniority_level
+                seniority_level=self._seniority_level,
             )
         elif employee_type == "salesperson":
             if self._commission_rate is None:
@@ -125,13 +124,12 @@ class EmployeeBuilder:
                 department=self._department,
                 base_salary=self._base_salary,
                 commission_rate=self._commission_rate,
-                sales_volume=self._sales_volume
+                sales_volume=self._sales_volume,
             )
         else:
             return Employee(
                 id=self._id,
                 name=self._name,
                 department=self._department,
-                base_salary=self._base_salary
+                base_salary=self._base_salary,
             )
-
