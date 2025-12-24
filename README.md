@@ -48,3 +48,8 @@
 - Задания: [tasks/](lab-08/tasks/)
 - Отчеты: [Отчет.md](lab-08/reports/Отчет.md), [Отчет.pdf](lab-08/reports/Отчет.pdf)
 - Скрипты:  [employee_management_system/](lab-08/employee_management_system/)
+
+### 📁 Лабораторная работа №9 (lab-09). Рефакторинг системы учета сотрудников
+- Задания: [tasks/](lab-09/tasks/)
+- Отчеты: [Отчет.md](lab-09/reports/Отчет.md), [Отчет.pdf](lab-09/reports/Отчет.pdf)
+- Скрипты:  [employee_management_system/](lab-09/employee_management_system/)
